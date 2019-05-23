@@ -17,27 +17,35 @@
             <a href="/rosas">Rosas</a>
 
     <table>
-  <tr>
-    <th>Página</th>
-    <th>Visitas</th> 
-    
-  </tr>
-  <tr>
-    <td>Cactus</td>
-    <td>0</td> 
-    
-  </tr>
-  <tr>
-    <td>Suculentas</td>
-    <td>0</td> 
-    
-  </tr>
+        {{#each ListaVisitas.general}}
+        <tr>
+            <td>Nombre: {{url}}</td>
+            <td>Visitas: {{ListaVisitas}}</td>
+            
+        </tr>
+         {{/each}}
+    </table>
 
+<table>
+  {{#each ListaVisitas.general}}
   <tr>
-    <td>Rosas</td>
-    <td>0</td> 
-    
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
   </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+ 
+ 
+ {{/each}}
+  
 </table>
+
+
+
+
 </body>
 </html>

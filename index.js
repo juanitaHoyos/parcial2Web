@@ -9,8 +9,8 @@ app.use(express.static('public'));
 app.engine('handlebars', motorRender());
 app.set('view engine', 'handlebars');
 
-var visitas = {
-    numero: [],
+var ListaVisitas = {
+    general: [],
     registro: []
   };
 
@@ -26,47 +26,47 @@ var visitas = {
 
   function registrarVisita(url) {
     let f = new Date();
-    if (visitas.general.length > 0) {
+    if (ListaVisitas.general.length > 0) {
       let encontro = false;
   
-      visitas.general.forEach((v, index) => {
+      ListaVisitas.general.forEach((v, index) => {
         if (v.url == url) {
-          v.visitas++;
-          let visi = v.visitas;
+          v.ListaVisitas++;
+          let visi = v.ListaVisitas;
           encontro = true;
   
           let informacion = {
             url: url,
-            visitas: visi,
+            ListaVisitas: visi,
             fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
             hora: f.getHours() + ":" + f.getMinutes()
           };
   
-          visitas.registro.push(informacion);
+          ListaVisitas.registro.push(informacion);
         }
       });
   
       if (encontro == false) {
         let informacion = {
           url: url,
-          visitas: 1,
+          ListaVisitas: 1,
           fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
           hora: f.getHours() + ":" + f.getMinutes()
         };
-        visitas.general.push(informacion);
-        visitas.registro.push(informacion);
+        ListaVisitas.general.push(informacion);
+        ListaVisitas.registro.push(informacion);
       }
     } else {
       let informacion = {
         url: url,
-        visitas: 1,
+        ListaVisitas: 1,
         fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
         hora: f.getHours() + ":" + f.getMinutes()
       };
-      visitas.general.push(informacion);
-      visitas.registro.push(informacion);
+      ListaVisitas.general.push(informacion);
+      ListaVisitas.registro.push(informacion);
     }
-    fs.writeFile("registro.txt", JSON.stringify(visitas), "utf8", function() {});
+    fs.writeFile("registro.txt", JSON.stringify(ListaVisitas), "utf8", function() {});
   }
 
 
@@ -78,6 +78,7 @@ app.get('/', function(req, res){
     var contexto ={
         titulo:'main',
         layout:false,
+        ListaVisitas: ListaVisitas
     };
     res.render('main', contexto);
 
