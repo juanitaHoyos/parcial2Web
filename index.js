@@ -60,6 +60,9 @@ var contador = {
     rosas : 0,
   };
 
+  var registro=[]
+  
+
   function lista(){
     
 
