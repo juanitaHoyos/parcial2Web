@@ -7,36 +7,36 @@
     <title>Document</title>
     
     <link href="https://fonts.googleapis.com/css?family=Lato|Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
     
-    <h1>Admin</h1>
-     <a href="/">Admin</a>
-            <a href="/cactus">Cactus</a>
-            <a href="/suculentas">Suculentas</a>
-            <a href="/rosas">Rosas</a>
+   
+     <div class="cont">
+                <a class="navA" href="/">Admin</a>
+            <a class="nav"href="/cactus">Cactus</a>
+            <a class="nav"href="/suculentas">Suculentas</a>
+            <a class="nav" href="/rosas">Rosas</a>
+            </div>
 
-    <table>
-        {{#each ListaVisitas.general}}
-        <tr>
-            <td>Nombre: {{url}}</td>
-            <td>Visitas: {{ListaVisitas}}</td>
+        <div class="banner">
+             <h1 class="nombre">Admin</h1> 
             
-        </tr>
-         {{/each}}
-    </table>
+            
+        </div>
 
+   
 <table>
   {{#each ListaVisitas.general}}
   <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
+    <th class="titulo">Nombre</th>
+    <th class="titulo">Visitas</th>
+    
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
+    <td class="texto"> {{url}}</td>
+    <td class="texto"> {{ListaVisitas}}</td>
+    
   </tr>
  
  
