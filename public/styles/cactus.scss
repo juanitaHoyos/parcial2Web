@@ -4,5 +4,49 @@
 }
 
 body{
-    background-color:green;
+    background-image: url('/imagenes/cactus.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   
+
+    padding: 15%;
+}
+.cont{
+    width: 100%;
+}
+.banner{
+    display: flex;
+    justify-content: center;
+    //width: 30%;
+    padding-left: 30%;
+}
+.nombre{
+    width: 100%;
+    font-family: 'Pacifico', cursive;
+    font-size: 150px;
+    color: white;
+}
+.nav{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    display: inline-block;
+    font-weight: 100;
+    font-size: 25px;
+    transition: 200ms;
+
+}
+
+.nav:hover{
+    color: rgb(103, 209, 4);
+}
+
+.navA{
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    color: rgb(103, 209, 4);
+    font-weight: 100;
+    font-size: 25px;
 }
