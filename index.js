@@ -2,14 +2,76 @@ var express = require('express');
 var app= express();
 
 var motorRender = require('express-handlebars');
-
-
 const fs = require('fs');
+
 
 app.use(express.static('public'));
 app.engine('handlebars', motorRender());
 app.set('view engine', 'handlebars');
 
+var visitas = {
+    numero: [],
+    registro: []
+  };
+
+  fs.readFile(__dirname + "/lista.txt", (err, data) => {
+    if (err) {
+      console.log("No se encontro el archivo");
+    } else {
+      visitas = JSON.parse(data);
+      console.log("Encontro el archivo");
+    }
+  });
+  
+
+  function registrarVisita(url) {
+    let f = new Date();
+    if (visitas.general.length > 0) {
+      let encontro = false;
+  
+      visitas.general.forEach((v, index) => {
+        if (v.url == url) {
+          v.visitas++;
+          let visi = v.visitas;
+          encontro = true;
+  
+          let informacion = {
+            url: url,
+            visitas: visi,
+            fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+            hora: f.getHours() + ":" + f.getMinutes()
+          };
+  
+          visitas.registro.push(informacion);
+        }
+      });
+  
+      if (encontro == false) {
+        let informacion = {
+          url: url,
+          visitas: 1,
+          fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+          hora: f.getHours() + ":" + f.getMinutes()
+        };
+        visitas.general.push(informacion);
+        visitas.registro.push(informacion);
+      }
+    } else {
+      let informacion = {
+        url: url,
+        visitas: 1,
+        fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+        hora: f.getHours() + ":" + f.getMinutes()
+      };
+      visitas.general.push(informacion);
+      visitas.registro.push(informacion);
+    }
+    fs.writeFile("registro.txt", JSON.stringify(visitas), "utf8", function() {});
+  }
+
+
+
+  ////////////////////////////////////////////////////////////////////77
 
 app.get('/', function(req, res){
 
@@ -27,8 +89,8 @@ app.get('/cactus', function(req,res){
         layout:false,
     };
     res.render('cactus', contexto);
-    contador.cactus++;
-    lista();
+    registrarVisita("cactus");
+    
 });
 
 app.get('/suculentas', function(req,res){
@@ -37,10 +99,8 @@ app.get('/suculentas', function(req,res){
         layout:false,
     };
     res.render('suculentas', contexto);
-    contador.suculentas++;
-    lista();
+    registrarVisita("suculentas");
 });
-
 
 app.get('/rosas', function(req,res){
     var contexto ={
@@ -48,32 +108,12 @@ app.get('/rosas', function(req,res){
         layout:false,
     };
     res.render('rosas', contexto);
-    contador.rosas++;
-    lista();
+    registrarVisita("rosas");
 });
 
-//AQUI VA LO DE LA LISTA
 
-var contador = {
-    cactus : 0,
-    suculentas : 0,
-    rosas : 0,
-  };
 
-  var registro=[]
-  
 
-  function lista(){
-    
-
-    fs.writeFileSync('lista.txt', 'Cactus: ' + contador.cactus+'\nSuculentas: ' + contador.suculentas+'\nRosas: ' + contador.rosas+'', 'utf8');
-
-    
-    fs.readFile('lista.txt', 'utf8', function(err, data){
-      if(err) throw err;
-      console.log(data);
-    });
-}
 
 app.listen(3000,function(){
 console.log('hola!');
