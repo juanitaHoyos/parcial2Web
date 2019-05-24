@@ -13,22 +13,38 @@
     
    
      <div class="cont">
-                <a class="navA" href="/">Home</a>
+                <a class="nav" href="/">Home</a>
             <a class="nav"href="/cactus">Cactus</a>
             <a class="nav"href="/suculentas">Suculentas</a>
             <a class="nav" href="/rosas">Rosas</a>
-            <a class="nav" href="/admin">Admin</a>
+             <a class="navA" href="/admin">Admin</a>
             </div>
 
         <div class="banner">
-             <h1 class="nombre">Home</h1> 
+             <h1 class="nombre">Admin</h1> 
             
             
         </div>
 
- <p class="descripcion">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
    
-
+<table class="tabla">
+  <tr>
+    <th class="titulo">Nombre</th>
+    <th class="titulo">Visitas</th>
+    
+  </tr>
+  {{#each ListaVisitas.general}}
+  
+  <tr>
+    <td class="texto"> {{url}}</td>
+    <td class="texto"> {{ListaVisitas}}</td>
+    
+  </tr>
+ 
+ 
+ {{/each}}
+  
+</table>
 
 
 

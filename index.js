@@ -78,7 +78,7 @@ app.get('/', function(req, res){
     var contexto ={
         titulo:'main',
         layout:false,
-        ListaVisitas: ListaVisitas
+        
     };
     res.render('main', contexto);
 
@@ -91,6 +91,17 @@ app.get('/cactus', function(req,res){
     };
     res.render('cactus', contexto);
     registrarVisita("cactus");
+    
+});
+
+app.get('/admin', function(req,res){
+    var contexto ={
+        titulo:'admin',
+        layout:false,
+        ListaVisitas: ListaVisitas
+    };
+    res.render('admin', contexto);
+   
     
 });
 

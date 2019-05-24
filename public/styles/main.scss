@@ -4,7 +4,7 @@
 }
 
 body{
-    background-image: url('/imagenes/cactus.jpg');
+    background-image: url('/imagenes/admin.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -61,4 +61,60 @@ body{
     color: rgb(103, 209, 4);
     font-weight: 100;
     font-size: 20px;
+}
+
+.tabla{
+    margin-left: 10%;
+    margin-top: 30px;
+}
+
+.titulo{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    color: rgb(103, 209, 4);
+   // display: inline-block;
+    font-weight: 100;
+    font-size: 20px;
+   // padding-right: 20px;
+}
+
+.texto{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    color: rgb(85, 44, 44);
+   // display: inline-block;
+    font-weight: 100;
+    font-size: 16px;
+    //padding-left: 10%;
+   // padding-right: 70px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+    
+}
+table {
+  
+    border-collapse: collapse;
+    width: 30%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  
+.descripcion{
+
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    color: rgb(85, 44, 44);
+    display: inline-block;
+    font-weight: 100;
+    font-size: 16px;
+    padding-left: 10%;
+    padding-right: 60%;
+    
+
 }
