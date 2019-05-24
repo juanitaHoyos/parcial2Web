@@ -1,3 +1,5 @@
+//LA FECHA Y HORA SE ENCUENTRAN EN REGISTRO
+
 var express = require('express');
 var app= express();
 
